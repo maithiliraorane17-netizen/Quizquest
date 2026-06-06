@@ -1,5 +1,5 @@
 import axios from 'axios';
-const api = axios.create({ baseURL: '/api', headers: { 'Content-Type': 'application/json' }, timeout: 10000 });
+const api = axios.create({ baseURL: 'https://quizquest-backend-fmts.onrender.com/api', headers: { 'Content-Type': 'application/json' }, timeout: 10000 });
 api.interceptors.request.use(c => {
   const t = localStorage.getItem('qq_token');
   if (t) c.headers.Authorization = `Bearer ${t}`;
