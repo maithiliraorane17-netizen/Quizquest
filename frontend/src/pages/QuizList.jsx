@@ -19,6 +19,7 @@ export default function QuizList() {
     if(diff!=='All')p.append('difficulty',diff);
     api.get(`/quizzes?${p}`).then(({data})=>setQuizzes(data.quizzes)).catch(()=>setQuizzes([])).finally(()=>setLoading(false));
   },[cat,diff]);
+  console.log("QUIZZES STATE:", quizzes);
   const filtered=quizzes.filter(q=>q.title.toLowerCase().includes(search.toLowerCase())||q.description.toLowerCase().includes(search.toLowerCase()));
   const pill=(active,ac)=>({ padding:'9px 17px', borderRadius:10, fontSize:13, fontWeight:600, cursor:'pointer', fontFamily:'inherit', border:'1.5px solid', transition:'all .2s', background:active?`${ac}14`:'rgba(255,255,255,0.7)', borderColor:active?`${ac}44`:'rgba(229,231,235,0.7)', color:active?ac:'#6b7280', backdropFilter:'blur(8px)' });
   return (
